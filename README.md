@@ -11,60 +11,172 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# API Documentation
 
-### `npm test`
+This document provides a detailed description of the API endpoints for the Todo List Project.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Base URL
 
-### `npm run build`
+The base URL for the API is:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Development**: `http://localhost:3000`
+- **Production**: `https://your-production-url.com`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Endpoints
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 1. User Registration
 
-### `npm run eject`
+**Endpoint**: `POST /register`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Description**: Register a new user.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Request Body**:
+```json
+{
+  "username": "Rakshitha Alluri",
+  "password": "123456"
+}
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Endpoints
+1. User Registration
+Endpoint: POST /register
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Description: Register a new user.
 
-## Learn More
+{
+  "username": "Rakshitha Alluri",
+  "password": "123456"
+}
+Response:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Success: 201 Created
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+{
+  "message": "User registered successfully."
+}
+Error: 400 Bad Request
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+{
+  "error": "Username or password missing."
+}
+2. User Login
+Endpoint: POST /login
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Description: Log in a user and obtain a JWT token.
 
-### Making a Progressive Web App
+Request Body:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+{
+  "username": "string",
+  "password": "string"
+}
+Response:
 
-### Advanced Configuration
+Success: 200 OK
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+{
+  "token": "string"
+}
+Error: 401 Unauthorized
 
-### Deployment
+{
+  "error": "Invalid username or password."
+}
+3. Create To-Do Item
+Endpoint: POST /todos
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Description: Create a new to-do item.
 
-### `npm run build` fails to minify
+Headers:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Authorization: Bearer <token>
+Request Body:
+
+{
+  "description": "string",
+  "status": "string"
+}
+Response:
+
+Success: 201 Created
+
+
+{
+  "message": "To-do item created."
+}
+Error: 400 Bad Request
+
+{
+  "error": "Invalid data."
+}
+4. Get All To-Do Items
+Endpoint: GET /todos
+
+Description: Fetch all to-do items for the logged-in user.
+
+Headers:
+
+Authorization: Bearer <token>
+Response:
+
+Success: 200 OK
+
+[
+  {
+    "id": "integer",
+    "description": "string",
+    "status": "string"
+  }
+]
+5. Update To-Do Item
+Endpoint: PUT /todos/:id
+
+Description: Update a to-do item.
+
+Headers:
+
+Authorization: Bearer <token>
+Request Body:
+
+
+{
+  "description": "string",
+  "status": "string"
+}
+Response:
+
+Success: 200 OK
+
+
+{
+  "message": "To-do item updated."
+}
+Error: 400 Bad Request
+
+
+{
+  "error": "Invalid data."
+}
+6. Delete To-Do Item
+Endpoint: DELETE /todos/:id
+
+Description: Delete a to-do item.
+
+Headers:
+
+Authorization: Bearer <token>
+Response:
+
+Success: 200 OK
+
+
+{
+  "message": "To-do item deleted."
+}
+Error: 404 Not Found
+
+{
+  "error": "To-do item not found."
+}
