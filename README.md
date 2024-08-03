@@ -180,3 +180,75 @@ Error: 404 Not Found
 {
   "error": "To-do item not found."
 }
+
+
+
+
+## Deployment Documentation
+
+### Frontend Deployment on Vercel
+
+The frontend of this application has been deployed on Vercel. Here are the steps to deploy the React frontend:
+
+1. **Sign Up / Log In to Vercel**:
+   - Go to [Vercel](https://vercel.com/).
+   - Sign up for a new account or log in to an existing account.
+
+2. **Import Your Project**:
+   - Click on "New Project".
+   - Import your GitHub repository by selecting the GitHub integration.
+   - Choose the repository containing your `todo-frontend` project.
+
+3. **Configure Build Settings**:
+   - Vercel will automatically detect the project framework (React).
+   - Ensure that the build command is set to `npm run build` and the output directory is set to `build`.
+
+4. **Environment Variables**:
+   - If your frontend requires environment variables, you can add them in the "Environment Variables" section under the "Settings" of your Vercel project.
+   - For this project, no specific environment variables are required for the frontend.
+
+5. **Deploy**:
+   - Click on "Deploy" to start the deployment process.
+   - Vercel will build and deploy your project. 
+
+6. **Access Your Deployed Frontend**:
+   - Once the deployment is complete, Vercel will provide a URL where your application is live. You can share this URL or access it directly.
+
+### Backend Deployment
+
+For the backend, you need to deploy it on a Node.js compatible hosting service. Here’s a general guide for deploying on services like Heroku:
+
+1. **Sign Up / Log In to Your Hosting Service**:
+   - Sign up or log in to a Node.js hosting service such as [Heroku](https://www.heroku.com/).
+
+2. **Prepare Your Application**:
+   - Ensure your `todo-backend` project has a `Procfile` with the following content:
+     ```
+     web: node server.js
+     ```
+   - Make sure all environment variables used in your application are defined in a `.env` file or configured in the hosting service’s settings.
+
+3. **Deploy Your Project**:
+   - Connect your GitHub repository to the hosting service.
+   - Deploy the project by selecting the repository containing your `todo-backend` code.
+   - Follow the service-specific instructions to complete the deployment process.
+
+4. **Set Environment Variables**:
+   - In the hosting service dashboard, navigate to the environment variables settings.
+   - Add necessary environment variables such as `JWT_SECRET` and any other required variables.
+
+5. **Access Your Deployed Backend**:
+   - Once deployment is complete, the hosting service will provide a URL where your backend is accessible.
+   - Update your frontend application to point to this backend URL if necessary.
+
+### Environment Variables
+
+For both frontend and backend, ensure the following environment variables are set:
+
+- **Frontend**: Generally, no specific environment variables are required unless you are connecting to a different backend URL.
+
+- **Backend**:
+  - `JWT_SECRET`: A secret key used for signing JWTs.
+  - Any other environment variables needed for database connections or external services.
+
+This documentation should guide you through deploying your project. If you encounter any issues, refer to the specific hosting service’s documentation for further assistance.
