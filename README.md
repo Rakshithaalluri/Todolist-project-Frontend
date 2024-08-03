@@ -31,7 +31,7 @@ The base URL for the API is:
 **Description**: Register a new user.
 
 **Request Body**:
-```json
+
 {
   "username": "Rakshitha Alluri",
   "password": "123456"
