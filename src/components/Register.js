@@ -43,7 +43,7 @@ const Register = ({ setIsRegistering }) => {
 
   return (
     <div className="register-container">
-      <h2>Create an Account </h2>
+      <h2> Create Your Todo List Account </h2>
       
       <input
         type="text"
@@ -73,56 +73,3 @@ export default Register;
 
 
 
-/* import React, { useState } from 'react';
-import './Register.css'
-
-const Register = ({setIsRegistering}) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleRegister = async () => {
-    try {
-      const response = await fetch('http://localhost:3000/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      });
-      if (response.ok) {
-        alert('Registration successful');
-        setIsRegistering(false);
-      } else {
-        alert('User Already Exists');
-      }
-    } catch (error) {
-      alert('Registration failed');
-    }
-  };
-
-  return (
-    <div className="register-container" >
-       <h2>Create Your Account</h2>
-       <p>to Start Managing Your To-Do List</p>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        className="register-input"
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        className="register-input"
-      />
-      <button onClick={handleRegister} className="register-button">Register</button>
-      <button onClick={() => setIsRegistering(false)} className="login-button">Already have an account? Login</button>
-    </div>
-  );
-};
-
-export default Register;
-*/
